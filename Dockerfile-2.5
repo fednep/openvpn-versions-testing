@@ -1,0 +1,11 @@
+FROM debian:testing-slim
+
+# Install OpenVPN
+RUN apt-get update && \
+    apt-get install -y openvpn=2.5.1-1 \
+                       iputils-ping \
+                       traceroute && \
+    mkdir /opt/openvpn
+
+WORKDIR /opt/openvpn
+COPY ./cfgs /opt/openvpn

@@ -1,0 +1,11 @@
+FROM debian:buster-slim
+
+# Install OpenVPN
+RUN apt-get update && \
+    apt-get install -y openvpn=2.4.7-1 \
+                       iputils-ping \
+                       traceroute && \
+    mkdir /opt/openvpn
+
+WORKDIR /opt/openvpn
+COPY ./cfgs /opt/openvpn
